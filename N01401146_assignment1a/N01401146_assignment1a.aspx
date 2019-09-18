@@ -9,114 +9,108 @@
 <body>
     <h1>Rock Climbing Incident Report</h1>
     <form id="form1" runat="server">
+        <h2>Please fill out the following:</h2>
+        <div>
+            <label>First name:</label>
+            <asp:Textbox runat="server" id="form_first_name"></asp:Textbox>
+            <label>Last name:</label>
+            <asp:Textbox runat="server" ID="form_last_name"></asp:Textbox>
+        </div>
+        <div>
+            <label>Date of Incident:</label>
+            <asp:Textbox runat="server" ID="incident_date"></asp:Textbox>
+        </div>
         <section>
-            <label for="firstname1">First name:</label>
-            <input type="text" id="firstname1" name="fname" placeholder="i.e. Anna." />
-            <label for="lastname1">Last name:</label>
-            <input type="text" id="lastname1" name="lname" placeholder="i.e. Green" />
+           <h3>Did this happen to you?</h3>
+            <asp:RadioButtonList runat="server" id="incident_person">
+                <asp:ListItem Text="Yes" Value="yes"></asp:ListItem>
+                <asp:ListItem Text="No" Value="no"></asp:ListItem>
+            </asp:RadioButtonList>
         </section>
         <section>
-            <label for="indate">Date of Incident:</label>
-            <input type="date" id="indate" name="idate" />
-        </section>
-        <section>
-            <p>Did this happen to you?</p>
-            <input type="radio" id="yes" name="yesno"/>
-            <label for="yes">Yes</label>
-            <input type="radio" id="no" name="yesno" />
-            <label for="no">No</label>
-        </section>
-        <section>
-            <p>If no, please fill out the following:</p>
-            <label for="firstname2">First name:</label>
-            <input type="text" id="firstname2" name="fname2" placeholder="i.e. John" />
-            <label for="lastname2">Last name:</label>
-            <input type="text" id="lastname2" name="lname2" placeholder="i.e. Smith" />
+            <h3>If no, please fill out the following:</h3>
+            <label>First name:</label>
+            <asp:TextBox runat="server" ID="no_first_name"></asp:TextBox>
+            <label>Last name:</label>
+            <asp:TextBox runat="server" ID="no_last_name"></asp:TextBox>
             <div>
-                <label for="relation">Relationship to affected individual:</label>
-                <select id="relationship">
-                <option value="select">Please select</option>
-                <option value="family">Family</option>
-                <option value="friend">Friend</option>
-                <option value="colleague">Colleague</option>
-                <option value="stranger">No relation</option>
-                <option value="other">Other</option>
-                </select>
-                <label for="other_description">If you choose other, please specify:</label>
-                <input type="text" id="other_2" name="other2" />
+                <h3>Relationship to affected individual:</h3>
+                <asp:DropDownList runat="server">
+                <asp:ListItem Text="Select" Value=""></asp:ListItem>
+                <asp:ListItem Text="Family" Value="family"></asp:ListItem>
+                <asp:ListItem Text="Friend" Value="friend"></asp:ListItem>
+                <asp:ListItem Text="Colleague" Value="colleague"></asp:ListItem>
+                <asp:ListItem Text="No Relation" Value="none"></asp:ListItem> 
+                <asp:ListItem Text="Other" Value="other"></asp:ListItem> 
+                </asp:DropDownList>
+                <label>If you choose other, please specify:</label>
+                <asp:TextBox runat="server" ID="other_specific"></asp:TextBox> 
             </div>       
          </section>
-        <section> 
+        <section>
+            <h3>What happened?</h3>
             <label>Please select the incident type: (please select all that apply)</label> 
         <div>
-            <input type="checkbox" value="fall" id="incident1" name="incident_type" />  
-            <label for="incident1">Fall</label>
+            <asp:CheckBoxList runat="server" ID="incident_type">  
+                <asp:ListItem Text="Fall" Value="fall"></asp:ListItem>
+                <asp:ListItem Text="Equipment Malfunction" Value="equip_mal"></asp:ListItem>
+                <asp:ListItem Text="Illness" Value="illness"></asp:ListItem>
+                <asp:ListItem Text="Other" Value="other"></asp:ListItem>
+            </asp:CheckBoxList>
         </div>
         <div>
-            <input type="checkbox" value="equipment" id="incident2" name="incident_type" />
-            <label for="incident2">Equipment malfunction</label>
-        </div>
-        <div>
-            <input type="checkbox" value="illness" id="incident3" name="incident_type" />
-            <label for="incident3">Illness</label>
-        </div>
-        <div>
-            <input type="checkbox" value="other" id="incident4" name="incident_type" />
-            <label for="incident4">Other</label>
-        </div>
-        <div>
-            <label for="incident4">If you chose other, please specify:</label>
-            <input type="text" id="incident_type" name="incident_type"/>
+            <label>If you chose other, please specify:</label>
+            <asp:Textbox runat="server" ID="other"></asp:Textbox>
         </div>
         </section>
+        <div>
+            <label>Please describe what occured in more detail:</label>
+            <asp:Textbox runat="server" id="description""></asp:Textbox>
+        </div>
         <section>
-            <label for="description">Please describe what occured in more detail:</label>
-            <textarea id="description"></textarea>
+            <h3>Was anyone else involved?</h3>
+            <asp:RadioButtonList runat="server" ID="other_involved">
+                <asp:ListItem Text="Yes" Value="yes"></asp:ListItem>
+                <asp:ListItem Text="No" Value="no"></asp:ListItem>
+            </asp:RadioButtonList>
         </section>
         <section>
-            <p>Was anyone else involved?</p>
-            <input type="radio" id="yes1" name="yesno1" />
-            <label for="yes1">Yes</label>
-            <input type="radio" id="no1" name="yesno1"/>
-            <label for="no1">No</label>
-        </section>
-        <section>
-            <p>If so, please tell us who:</p>
-            <label for="involved1">Name:</label>
-            <input type="text" id="involved" name="involved1" />
+            <h3>If so, please tell us who:</h3>
+            <label>Name:</label>
+            <asp:TextBox runat="server" ID="involved_name"></asp:TextBox>
             <div>
-                <label for="relation">Relationship to affected individual:</label>
-                <select id="relation">
-                    <option value="select">Please select</option>
-                    <option value="family">Family</option>
-                    <option value="friend">Friend</option>
-                    <option value="colleague">Colleague</option>
-                    <option value="stranger">No relation</option>
-                    <option value="other">Other</option>
-                </select>
-                <label for="other2">If you choose other, please specify:</label>
-                <input type="text" id="other2" name="other2" />
+                <label>Relationship to affected individual:</label>
+                <asp:DropDownList runat="server">
+                    <asp:ListItem Text="Select" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Family" Value="family"></asp:ListItem>
+                    <asp:ListItem Text="Friend" Value="friend"></asp:ListItem>
+                    <asp:ListItem Text="Colleague" Value="colleague"></asp:ListItem>
+                    <asp:ListItem Text="No Relation" Value="none"></asp:ListItem> 
+                    <asp:ListItem Text="Other" Value="other"></asp:ListItem> 
+                </asp:DropDownList>
+                <label>If you choose other, please specify:</label>
+                <asp:TextBox runat="server" ID="TextBox1"></asp:TextBox>
             </div>
         </section>
         <section>
-            <label for="involved1">Please specify how they were involved:</label>
-            <input type="radio" id="directly" name="direct" />
-            <label for="directly">Directly</label>
-            <input type="radio" id="indirectly" name="direct" />
-            <label for="indirectly">Indirectly</label>
+            <h3>Please specify how they were involved:</h3>
+            <asp:RadioButtonList runat="server" ID="how_involved">
+                <asp:ListItem Text="Directly" Value="directly"></asp:ListItem>
+                <asp:ListItem Text="Indirectly" Value="indirectly"></asp:ListItem>
+            </asp:RadioButtonList>
             <div>
-                <textarea id="involved1"></textarea>
+                <asp:TextBox runat="server" ID="direct_text"></asp:TextBox>
             </div>
         </section>
         <div>
-            <label for="anyelse">Anything else you would like us to know?</label>
-            <textarea id="anyelse"></textarea>
+            <label>Anything else you would like us to know?</label>
+            <asp:Textbox runat="server" id="anyelse"></asp:Textbox>
         </div>
         <div>
-            <label for="initials">Please enter your initials to verify that everything you've entered is true:</label>
-            <input type="text" id="initials" name="initials" />
+            <label>Please enter your initials to verify that everything you've entered is true:</label>
+            <asp:Textbox runat="server" id="initials"></asp:Textbox> 
         </div>
-        <button type="submit" id="submit" name="submit">Submit</button>
+        <asp:Button runat="server" text="submit"/>
     </form>
 </body>
 </html>
